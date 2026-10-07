@@ -1,0 +1,13 @@
+# Python / build
+__pycache__/
+*.pyc
+.venv/
+build/
+배포/
+
+# 실제 근무 데이터는 저장소에 올리지 않는다 (AGENTS.md: 실제 직원 명부/근무 엑셀 미포함)
+*.xlsx
+/*.json
+
+# 로컬 도구 설정
+.claude/settings.local.json

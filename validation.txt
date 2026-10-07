@@ -1,0 +1,31 @@
+Validation: supplied September allowance workbook and October roster, plus engine scenarios (1.8.0, 2026-10-08, Windows 11 / Python 3.14.3 .venv).
+
+test_change_vs_cycle_and_vs_roster (test_engine.EngineTest.test_change_vs_cycle_and_vs_roster) ... ok
+test_change_vs_untouched_roster (test_engine.EngineTest.test_change_vs_untouched_roster) ... ok
+test_cycle_continues_across_month_and_year (test_engine.EngineTest.test_cycle_continues_across_month_and_year) ... ok
+test_explain_popup_numbers (test_engine.EngineTest.test_explain_popup_numbers) ... ok
+test_fraction_floor (test_engine.EngineTest.test_fraction_floor) ... ok
+test_guide_documents_render (test_engine.EngineTest.test_guide_documents_render) ... ok
+test_holiday_override (test_engine.EngineTest.test_holiday_override) ... ok
+test_leave_compare_only_for_annual_leave (test_engine.EngineTest.test_leave_compare_only_for_annual_leave) ... ok
+test_leave_day_vs_unused_negative_month (test_engine.EngineTest.test_leave_day_vs_unused_negative_month) ... ok
+test_leave_distinction (test_engine.EngineTest.test_leave_distinction) ... ok
+test_month_formula_parts (test_engine.EngineTest.test_month_formula_parts) ... ok
+test_negative_and_crossing (test_engine.EngineTest.test_negative_and_crossing) ... ok
+test_old_save_without_leave_settings (test_engine.EngineTest.test_old_save_without_leave_settings) ... ok
+test_project_salary_table_and_year_check (test_engine.EngineTest.test_project_salary_table_and_year_check) ... ok
+test_replace_vs_add (test_engine.EngineTest.test_replace_vs_add) ... ok
+test_salary_table_and_leave_comp (test_engine.EngineTest.test_salary_table_and_leave_comp) ... ok
+test_saved_file_comparison (test_engine.EngineTest.test_saved_file_comparison) ... ok
+test_supplied_workbooks (test_engine.EngineTest.test_supplied_workbooks) ... ok
+test_updater_versions_and_swap (test_engine.EngineTest.test_updater_versions_and_swap) ... ok
+test_user_isolation_and_roundtrip (test_engine.EngineTest.test_user_isolation_and_roundtrip) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 1.437s
+
+OK
+
+EXE self-test (배포/교대근무수당플래너 v1.8.0):
+selftest: {"holidays_2026": 22, "chuseok": "추석", "pay_2026_10": 585770, "salary_year": 2026, "help_chars": 13451, "intro_chars": 4933, "docs": 8, "version": "1.8.0", "title": "교대근무 수당 플래너 v1.8.0 — 저장 안 된 작업"}
+selftest with stray numpy folder: 585770
