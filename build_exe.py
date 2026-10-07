@@ -53,7 +53,9 @@ def release(archive):
     log=(ROOT/'CHANGELOG.md').read_text(encoding='utf-8')
     m=re.search(r'^## '+re.escape(VERSION)+r'\b.*?(?=^## |\Z)',log,re.S|re.M)
     notes=m.group(0) if m else f'v{VERSION}'
-    subprocess.check_call(['gh','release','create',f'v{VERSION}',str(archive),'--repo',REPO,'--title',f'v{VERSION}','--notes',notes])
+    asset=Path(archive).with_name(f'shift-allowance-planner_v{VERSION}.zip')  # GitHub strips Korean from asset names
+    shutil.copy2(archive,asset)
+    subprocess.check_call(['gh','release','create',f'v{VERSION}',str(asset),'--repo',REPO,'--title',f'v{VERSION}','--notes',notes])
     print('GitHub 릴리스 게시:',f'https://github.com/{REPO}/releases/tag/v{VERSION}')
 
 def main():

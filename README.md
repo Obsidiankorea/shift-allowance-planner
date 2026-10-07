@@ -31,11 +31,13 @@ Windows 11 스타일의 Python 대화상자 프로그램입니다. 실제 지급
 
 ## 업데이트
 
+저장소: https://github.com/Obsidiankorea/shift-allowance-planner (공개) · 릴리스: https://github.com/Obsidiankorea/shift-allowance-planner/releases
+
 - **EXE**: ☰ → `업데이트 확인` 또는 시작할 때 자동 확인. GitHub 릴리스에 새 버전이 있으면 받아서 프로그램 폴더를 바꾸고 다시 켭니다. 옛 폴더는 `교대근무수당플래너_이전버전`으로 남습니다. 저장 데이터(`%LOCALAPPDATA%`)는 그대로입니다.
 - **소스 실행(git 저장소)**: 「재난상황보고서」와 같은 방식으로 `git pull --ff-only`. 이 PC에서 고친 파일과 겹치면 받지 않고 이유를 보여 줍니다. 받은 뒤 다시 켜야 반영됩니다.
 - **설정 → 문서·업데이트**: `시작할 때 업데이트 확인`(기본 켬), `새 버전이 있으면 자동으로 받아 설치`(기본 끔, 켜면 받아 둔 뒤 지금 다시 시작하거나 끌 때 적용).
 - 확인에 실패하면(인터넷 차단 등) "최신"으로 표시하지 않고 실패라고 알립니다.
-- 개발자: `version.py`의 `VERSION`을 올리고 `CHANGELOG.md`에 같은 버전 항목을 쓴 뒤 `.venv\Scripts\python.exe build_exe.py --release`를 실행하면 `v버전` GitHub 릴리스에 zip이 올라갑니다.
+- 개발자: `version.py`의 `VERSION`을 올리고 `CHANGELOG.md`에 같은 버전 항목을 쓴 뒤 `.venv\Scripts\python.exe build_exe.py --release`를 실행하면 `v버전` GitHub 릴리스에 `shift-allowance-planner_v버전.zip`이 올라갑니다 (GitHub가 첨부 파일 이름의 한글을 지우므로 영문 이름으로 올림).
 
 ## 실행 (Python 소스)
 

@@ -674,6 +674,7 @@ def selftest(out):
         w=Main();w.resize(1200,900);hs=holiday_map(w.p,2026);r=calculate(w.p,'demo',2026,10)
         w.grab().save(str(Path(out).with_suffix('.png')))
         result={'holidays_2026':len(hs),'chuseok':hs.get('2026-09-25'),'pay_2026_10':r['pay'],'salary_year':salary_table(w.p)[0],'help_chars':len(render('도움말')[0]),'intro_chars':len(render('시작 안내')[0]),'docs':len(list(doc_dir().glob('*.md'))),'version':VERSION,'title':w.windowTitle()}
+        u=updater.check(timeout=8);result['update']={k:u.get(k) for k in ['ok','latest','newer','error']}  # HTTPS from inside the EXE; offline is reported, not failed
     except Exception:result={'error':traceback.format_exc()}
     Path(out).write_text(json.dumps(result,ensure_ascii=False),encoding='utf-8')
 

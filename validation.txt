@@ -22,10 +22,10 @@ test_updater_versions_and_swap (test_engine.EngineTest.test_updater_versions_and
 test_user_isolation_and_roundtrip (test_engine.EngineTest.test_user_isolation_and_roundtrip) ... ok
 
 ----------------------------------------------------------------------
-Ran 20 tests in 1.437s
+Ran 20 tests in 0.853s
 
 OK
 
 EXE self-test (배포/교대근무수당플래너 v1.8.0):
-selftest: {"holidays_2026": 22, "chuseok": "추석", "pay_2026_10": 585770, "salary_year": 2026, "help_chars": 13451, "intro_chars": 4933, "docs": 8, "version": "1.8.0", "title": "교대근무 수당 플래너 v1.8.0 — 저장 안 된 작업"}
+selftest: {"holidays_2026": 22, "chuseok": "추석", "pay_2026_10": 585770, "salary_year": 2026, "help_chars": 13451, "intro_chars": 4933, "docs": 8, "version": "1.8.0", "title": "교대근무 수당 플래너 v1.8.0 — 저장 안 된 작업", "update": {"ok": true, "latest": "1.8.0", "newer": false, "error": null}}
 selftest with stray numpy folder: 585770

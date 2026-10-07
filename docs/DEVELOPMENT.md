@@ -55,7 +55,7 @@ EXE 다른 PC 오류 (1.6.1, 2026-10-07): 사용자가 `_internal\`이 최상위
 
 EXE 빌드 (1.6, 2026-10-07): PyInstaller 6.22.3, Python 3.14.3, PySide6 6.11.2. `holidays`는 국가 모듈과 한국어 이름(.mo)을 실행 중에 불러오므로 `--collect-all holidays`가 필요하다 (첫 빌드에서 빠져 점검 실패 → 추가 후 통과). 빌드 후 `교대근무수당플래너.exe --selftest <json>`이 임시 폴더에서 Main 창 생성·그리기, 2026 공휴일 22일·9/25 "추석", 데모 10월 수당 585,770원(소스 실행과 같음)을 기록했다. 실제 Windows 플랫폼 플러그인으로 그린 화면(배율 1.2)도 확인했다. 결과 폴더 약 127MB. 실제 클릭 조작, 다른 PC(파이썬 없는 PC)에서의 실행, SmartScreen 동작은 확인하지 않았다. `build/`는 PyInstaller 작업 폴더라 지워도 다시 생긴다.
 
-1.8 확인 (2026-10-08): 테스트 20개(문서 렌더링·끼워넣기 순환·front matter, 업데이트 버전 비교와 폴더 교체 `finish`). offscreen으로 문서 창(시작 안내 4개 원본, 원문 편집·저장 즉시 반영, 외부 저장 1초 감시 반영, `doc:` 링크 새 창), 설정 `문서·업데이트` 탭 저장(prefs `editor`, `editor_path`, `update_check`, `auto_update`), 소스 실행(git 아님) 수동 확인 메시지 확인. EXE 빌드: 문서 8개 동봉·렌더링, v1.8.0, 빈 numpy 폴더 점검 통과. **실제 GitHub 릴리스 다운로드·교체는 저장소가 아직 없어 확인하지 못했다** (`finish` 파일 교체는 단위 테스트로만 확인). 근무 증감 대비 손익(`hours_effect`): 10/16 야→비 −63,890원 = 근무 −15.5h 중 시간외 −2h, 토요일 비→주는 휴일 공제라 표시 안 함을 확인.
+1.8 확인 (2026-10-08): 테스트 20개(문서 렌더링·끼워넣기 순환·front matter, 업데이트 버전 비교와 폴더 교체 `finish`). offscreen으로 문서 창(시작 안내 4개 원본, 원문 편집·저장 즉시 반영, 외부 저장 1초 감시 반영, `doc:` 링크 새 창), 설정 `문서·업데이트` 탭 저장(prefs `editor`, `editor_path`, `update_check`, `auto_update`), 소스 실행(git 아님) 수동 확인 메시지 확인. EXE 빌드: 문서 8개 동봉·렌더링, v1.8.0, 빈 numpy 폴더 점검 통과. 공개 저장소 `Obsidiankorea/shift-allowance-planner` 생성·푸시, `build_exe.py --release`로 v1.8.0 릴리스 게시 후: 소스에서 `updater.check()` → latest 1.8.0, v1.7.0 클라이언트로 가정 시 newer True, `download()`로 실제 zip(54.8MB) 받아 풀기, 임시 프로그램 폴더에 `finish()` 교체(고친 문서는 `_이전버전`에 보존) 확인. EXE 자체 점검에서도 HTTPS 업데이트 확인 성공(`update.ok=true`). 실제 `--finish-update` 재실행 화면 흐름(옛 EXE 종료 대기 → 교체 → `--updated` 재실행)은 GUI를 띄워야 해 확인하지 않았다. 근무 증감 대비 손익(`hours_effect`): 10/16 야→비 −63,890원 = 근무 −15.5h 중 시간외 −2h, 토요일 비→주는 휴일 공제라 표시 안 함을 확인.
 
 1.7 GUI 확인 (2026-10-08, offscreen, 임시 autosave/prefs): 메뉴 항목 12개(구분선 포함), 한 줄 요약, 실제 `edit_day` 경로로 10/16 야→야연(−139,137원 손해 = 야간 −36,510 − 보상비 102,627), 10/17 비→주(+123,760원 실익), 수정 취소(−123,760원) 알림과 히스토리 3건, 알림 클릭·히스토리 더블클릭으로 계산 근거 창이 열리는 것을 확인. 실제 마우스 조작은 확인하지 않았다.
 
@@ -79,7 +79,9 @@ GUI: QT_QPA_PLATFORM=offscreen으로 메인창 렌더링, 설정 대화상자 �
 2. 테스트(`python -m unittest discover -s tests`) 통과 후 `build_exe.py --release` → EXE 빌드·자체 점검·`배포/교대근무수당플래너_v<VERSION>.zip` → `gh release create v<VERSION>` (노트 = CHANGELOG 해당 절).
 3. 사용자 PC의 EXE는 시작할 때(설정에 따라) `https://api.github.com/repos/<REPO>/releases/latest`를 확인한다. **비공개 저장소면 토큰 없이 확인할 수 없다** (404 → "확인 실패"로 표시, 최신으로 보지 않음).
 4. 교체 순서: 옛 EXE가 zip을 `%TEMP%/sap_update_*`에 풀고 새 EXE를 `--finish-update <프로그램 폴더> <옛 PID>`로 띄운 뒤 종료 → 새 EXE가 옛 PID 종료를 기다려 폴더를 `_이전버전`으로 이름 바꾸고(잠겨 있으면 복사) 새 파일을 복사 → `--updated`로 다시 실행.
-5. git 저장소에는 `.gitignore`로 실제 근무 데이터(`*.xlsx`, 루트 `*.json` 저장 시나리오)와 `배포/`, `build/`를 올리지 않는다.
+5. 릴리스 첨부 파일은 영문 이름 `shift-allowance-planner_v<VERSION>.zip`으로 올린다 (GitHub가 한글을 지워 `_v1.8.0.zip`이 됐던 문제). 업데이트는 이름과 무관하게 첫 `.zip` 첨부를 받는다.
+6. 공개 저장소이므로 커밋 작성자는 저장소 로컬 설정 `Obsidiankorea <…@users.noreply.github.com>`을 쓴다 (전역 git 설정의 실명·기관 이메일 노출 방지). 코드·문서·예시 화면에 실제 직원 이름·본봉을 넣지 않는다. 실제 엑셀 대조 테스트의 확인용 이름은 환경변수 `TEST_MAIN_PERSON`으로만 준다.
+7. git 저장소에는 `.gitignore`로 실제 근무 데이터(`*.xlsx`, 루트 `*.json` 저장 시나리오)와 `배포/`, `build/`를 올리지 않는다.
 
 ## 연례 봉급표 갱신 절차 (AI/개발자용)
 
